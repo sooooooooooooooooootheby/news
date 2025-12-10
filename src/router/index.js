@@ -14,9 +14,9 @@ const router = createRouter({
 			component: () => import("@/views/neteaseNews.vue"),
 		},
 		{
-			path: "/wearteDate",
-			name: "wearteDate",
-			component: () => import("@/views/wearteDate.vue"),
+			path: "/weaterDate",
+			name: "查询天气",
+			component: () => import("@/views/weaterDate.vue"),
 		},
 	],
 });
