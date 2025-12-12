@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="fixed w-full z-10 bg-base-100">
+		<div class="bg-base-100 fixed z-10 w-full">
 			<AppHeader />
 			<TabList />
 		</div>

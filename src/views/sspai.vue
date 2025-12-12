@@ -1,23 +1,23 @@
 <template>
 	<div class="py-4">
 		<template v-if="!sspaiStore.isError">
-			<form class="filter px-4">
+			<form class="px-4 filter">
 				<label for="clear">
 					<input id="clear" class="hidden" type="reset" @click="sspaiStore.getList()" />
-					<div class="btn btn-xs rounded-full btn-square mr-1">
+					<div class="btn btn-xs btn-square mr-1 rounded-full">
 						<Icon icon="gravity-ui:xmark" class="text-sm text-gray-600" />
 					</div>
 				</label>
 				<template v-for="item in type" :key="item">
-					<input class="btn btn-xs rounded-full my-0.5" type="radio" name="frameworks" :aria-label="item" @click="sspaiStore.getTypeList(item)" />
+					<input class="btn btn-xs my-0.5 rounded-full" type="radio" name="frameworks" :aria-label="item" @click="sspaiStore.getTypeList(item)" />
 				</template>
 			</form>
 			<ul class="list">
 				<template v-if="sspaiStore.list.length > 0">
 					<template v-for="item in sspaiStore.list" :key="item.id">
-						<li class="list-row w-full flex flex-col gap-2">
-							<div class="w-full h-46 rounded-lg overflow-hidden">
-								<img :src="`https://cdnfile.sspai.com/${item.cover}`" :alt="item.cover" class="w-full h-full object-cover" />
+						<li class="list-row flex w-full flex-col gap-2">
+							<div class="h-46 w-full overflow-hidden rounded-lg">
+								<img :src="`https://cdnfile.sspai.com/${item.cover}`" :alt="item.cover" class="h-full w-full object-cover" />
 							</div>
 							<p class="text-xs text-gray-600">{{ item.author }}</p>
 							<p class="text-sm font-bold text-gray-800">{{ item.title }}</p>
@@ -32,14 +32,14 @@
 					</template>
 				</template>
 				<template v-else>
-					<li class="list-row w-full flex flex-col gap-2">
+					<li class="list-row flex w-full flex-col gap-2">
 						<div class="skeleton h-46 w-full"></div>
 						<div class="skeleton h-4 w-28"></div>
 						<div class="skeleton h-4 w-full"></div>
 						<div class="skeleton h-4 w-full"></div>
 						<div class="skeleton h-4 w-12"></div>
 					</li>
-					<li class="list-row w-full flex flex-col gap-2">
+					<li class="list-row flex w-full flex-col gap-2">
 						<div class="skeleton h-46 w-full"></div>
 						<div class="skeleton h-4 w-28"></div>
 						<div class="skeleton h-4 w-full"></div>
@@ -51,7 +51,7 @@
 		</template>
 		<template v-else>
 			<li class="pt-12">
-				<div class="text-center text-gray-600 flex flex-col items-center justify-center gap-4">
+				<div class="flex flex-col items-center justify-center gap-4 text-center text-gray-600">
 					<div class="text-7xl">🤯</div>
 					<p>数据获取失败</p>
 				</div>

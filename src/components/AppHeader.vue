@@ -1,6 +1,6 @@
 <template>
-	<div class="navba border-b border-base-300 px-4 py-3 min-h-0 flex items-center justify-between gap-2">
-		<div class="text-xl text-gray-600 font-bold">
+	<div class="navba border-base-300 flex min-h-0 items-center justify-between gap-2 border-b px-4 py-3">
+		<div class="text-xl font-bold text-gray-600">
 			<span class="text-blue-500">G</span>
 			<span class="text-red-500">o</span>
 			<span class="text-yellow-500">o</span>
