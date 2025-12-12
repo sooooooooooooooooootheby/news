@@ -1,8 +1,12 @@
 <template>
 	<div>
-		<AppHeader />
-		<TabList />
-		<router-view></router-view>
+		<div class="fixed w-full z-10 bg-base-100">
+			<AppHeader />
+			<TabList />
+		</div>
+		<div class="pt-24">
+			<router-view></router-view>
+		</div>
 	</div>
 </template>
 
