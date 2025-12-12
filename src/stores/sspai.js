@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const useSspaiStore = defineStore("sspai", () => {
 	const list = ref([]);
-    const isError = ref(false);
+	const isError = ref(false);
 
 	const clearList = () => {
 		list.value = [];
@@ -17,7 +17,7 @@ export const useSspaiStore = defineStore("sspai", () => {
 			})
 			.catch((err) => {
 				console.error("获取列表失败：", err);
-                isError.value = true;
+				isError.value = true;
 			});
 	};
 	const getTypeList = async (type) => {
@@ -29,7 +29,7 @@ export const useSspaiStore = defineStore("sspai", () => {
 			})
 			.catch((err) => {
 				console.error("获取类型列表失败：", err);
-                isError.value = true;
+				isError.value = true;
 			});
 	};
 
