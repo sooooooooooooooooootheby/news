@@ -1,13 +1,13 @@
 <template>
-	<div role="tablist" class="tabs tabs-box tabs-sm scrollbar-hide flex h-10 min-h-auto w-full flex-nowrap items-center gap-2 overflow-x-auto bg-transparent p-3">
-		<div v-for="item in list" :key="item.path">
+	<div role="tablist" class="tabs tabs-box tabs-sm scrollbar-hide flex h-10 flex-nowrap items-center gap-2 overflow-x-auto bg-transparent p-3">
+		<template v-for="item in list" :key="item.path">
 			<router-link
 				:to="item.path"
 				class="tab shrink-0 rounded-lg text-sm"
 				:class="{ 'tab-active h-auto bg-sky-100/75 py-1 text-sky-800 shadow-sm': item.name === router.currentRoute.value.name }"
 				>{{ item.name }}
 			</router-link>
-		</div>
+		</template>
 	</div>
 </template>
 

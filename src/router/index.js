@@ -33,6 +33,11 @@ const router = createRouter({
 			name: "新闻资料",
 			component: () => import("@/views/NewsFeed.vue"),
 		},
+		{
+			path: "/Disease",
+			name: "疾病预防",
+			component: () => import("@/views/Disease.vue"),
+		},
 	],
 });
 
