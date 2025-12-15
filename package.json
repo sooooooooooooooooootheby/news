@@ -13,6 +13,7 @@
 		"format": "prettier --write --experimental-cli ."
 	},
 	"dependencies": {
+		"@amap/amap-jsapi-loader": "^1.0.1",
 		"@tailwindcss/vite": "^4.1.17",
 		"axios": "^1.13.2",
 		"element-plus": "^2.12.0",

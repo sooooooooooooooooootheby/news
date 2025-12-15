@@ -1,21 +1,33 @@
 <template>
 	<div class="pt-4">
-		<label class="input">
-			<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
-					<circle cx="11" cy="11" r="8"></circle>
-					<path d="m21 21-4.3-4.3"></path>
-				</g>
-			</svg>
-			<input v-model="search" type="search" required placeholder="Search" />
-			<button @click="handlesearch()">搜索</button>
-		</label>
+		<div class="flex items-baseline justify-between gap-2">
+			<label class="input">
+				<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+						<circle cx="11" cy="11" r="8"></circle>
+						<path d="m21 21-4.3-4.3"></path>
+					</g>
+				</svg>
+				<input v-model="weatherStore.search" type="search" required placeholder="Search" />
+				<button @click="weatherStore.handleSearch(weatherStore.search)">搜索</button>
+			</label>
+			<button class="btn" onclick="my_modal_5.showModal()">
+				<Icon icon="gravity-ui:map-pin" class="text-sm" />
+			</button>
+			<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle" onclick="my_modal_5.close()">
+				<div class="modal-box p-4 pt-10">
+					<form method="dialog">
+						<Map />
+					</form>
+				</div>
+			</dialog>
+		</div>
 
-		<div v-if="weatherData.result && weatherData.result.list">
-			<div class="card bg-base-100 card-xs mt-4 w-full shadow-sm" v-for="wd in weatherData.result.list" :key="wd.date">
+		<div v-if="weatherStore.weatherData.result && weatherStore.weatherData.result.list">
+			<div class="card bg-base-100 card-xs mt-4 w-full shadow-sm" v-for="wd in weatherStore.weatherData.result.list" :key="wd.date">
 				<div class="card-body">
 					<h2 class="card-title">{{ wd.date }}</h2>
-					<h3 class="card-title">{{ weatherData.result.province }}&nbsp;&nbsp;&nbsp;&nbsp;{{ wd.week }}&nbsp;&nbsp;&nbsp;&nbsp;{{ wd.weather }}</h3>
+					<h3 class="card-title">{{ weatherStore.weatherData.result.province }}&nbsp;&nbsp;&nbsp;&nbsp;{{ wd.week }}&nbsp;&nbsp;&nbsp;&nbsp;{{ wd.weather }}</h3>
 					<h2>平均气温:{{ wd.real }}&nbsp;&nbsp;&nbsp;&nbsp;最低气温:{{ wd.lowest }}&nbsp;&nbsp;&nbsp;&nbsp;最高气温:{{ wd.highest }}</h2>
 					<h4>{{ wd.tips }}</h4>
 					<div class="card-actions justify-end"></div>
@@ -27,35 +39,14 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import axios from "axios";
-
-let search = ref("");
-
-let handlesearch = () => {
-	if (!search.value) return;
-	axios
-		.get("https://apis.tianapi.com/tianqi/index", {
-			params: {
-				key: "49c188c14c102574274b7e1e0c67af7b",
-				city: search.value,
-				type: 7,
-			},
-		})
-		.then((res) => {
-			console.log(res);
-			weatherData.value = res.data;
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-};
+import Map from "@/components/Map.vue";
+import { useWeatherStore } from "@/stores/weaterDate.js";
+const weatherStore = useWeatherStore();
 
 onMounted(() => {
-	search.value = "来宾市";
-	handlesearch();
+	weatherStore.handleSearch(weatherStore.search);
 });
 
-const weatherData = ref([]);
 const weatherData1 = ref({
 	code: 200,
 	msg: "success",
